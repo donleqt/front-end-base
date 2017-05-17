@@ -24,16 +24,8 @@ gulp.task('templates', function() {
 
 gulp.task('default',['sass','templates'],function () {
     gulp.watch(root+'/css/**/*.scss',['sass']);
-    gulp.watch(root+'/*.pug',function (file) {
-        try {
-            gulp.src(file.path)
-                .pipe(plugins.pug({
-                    pretty: true
-                }))
-                .pipe(gulp.dest('.'));
-        }
-        catch (err) {
-            console.log(err);
-        }
-    });
+    gulp.watch([
+        root+'/*.pug',
+        root+'/templates/**/*.pug'
+    ],['templates']);
 });
