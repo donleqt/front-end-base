@@ -4,6 +4,7 @@
   "description": "",
   "main": "gulpfile.js",
   "dependencies": {
+    "gulp-notify": "^3.0.0",
     "pug": "^2.0.0-beta9"
   },
   "devDependencies": {

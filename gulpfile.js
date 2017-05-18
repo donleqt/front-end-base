@@ -19,6 +19,9 @@ gulp.task('templates', function() {
         .pipe(plugins.pug({
             pretty: true
         }))
+        .on('error', plugins.notify.onError(function (error) {
+            return 'An error occurred while compiling pug.\nLook in the console for details.\n' + error;
+        }))
         .pipe(gulp.dest('.'));
 });
 
