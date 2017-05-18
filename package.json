@@ -4,6 +4,7 @@
   "description": "",
   "main": "gulpfile.js",
   "dependencies": {
+    "gulp-livereload": "^3.8.1",
     "gulp-notify": "^3.0.0",
     "pug": "^2.0.0-beta9"
   },
@@ -27,9 +28,10 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "ws --port 4000",
+    "start": "ws --port 3000",
     "watch": "gulp default",
-    "host": "gulp default ws --port 4000"
+    "host": "gulp default ws --port 4000",
+    "global": "npm install -g local-web-server"
   },
   "repository": {
     "type": "git",

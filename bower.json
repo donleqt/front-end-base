@@ -1,0 +1,20 @@
+{
+  "name": "adp_theme",
+  "description": "",
+  "main": "gulpfile.js",
+  "authors": [
+    "DESKTOP-Q6EAHGS\\Don Le <donleqt@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  }
+}

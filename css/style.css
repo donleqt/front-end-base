@@ -1,45 +1,4 @@
 @import url("https://fonts.googleapis.com/css?family=Raleway:400,500,600,700,700i&subset=latin-ext");
-* {
-  margin: 0; }
-
-*, *:before, *:after {
-  -webkit-box-sizing: inherit;
-  -moz-box-sizing: inherit;
-  box-sizing: inherit; }
-
-.row::before,
-.row::after {
-  display: table;
-  content: " ";
-  clear: both; }
-
-.col {
-  float: left; }
-
-.clearfix:after {
-  clear: both;
-  content: ".";
-  display: block;
-  height: 0;
-  visibility: hidden; }
-
-.clearfix {
-  display: inline-block; }
-
-.clearfix {
-  display: block; }
-
-.text-center {
-  text-align: center; }
-
-.text-right {
-  text-align: right; }
-
-.group:after {
-  content: "";
-  display: table;
-  clear: both; }
-
 html {
   font-size: 62.5%;
   min-height: 100%;
