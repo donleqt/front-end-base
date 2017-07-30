@@ -1,4 +1,5 @@
 const gulp = require('gulp');
+const webserver = require('gulp-webserver');
 const child_process = require('child_process');
 const plugins  = require("gulp-load-plugins")({
     pattern: ['gulp-*', 'gulp.*']
@@ -11,6 +12,10 @@ gulp.task('sass', function() {
     gulp.src(localDest +'/importer.scss')
         .pipe(plugins.sourcemaps.init())
         .pipe(plugins.sass().on('error', plugins.sass.logError))
+        .pipe(plugins.autoprefixer({
+          browsers: ['last 2 versions'],
+          cascade: false
+        }))
         .pipe(plugins.rename({basename : 'style', suffix: ''}))
         .pipe(plugins.sourcemaps.write('./'))
         .pipe(gulp.dest(localDest))
@@ -30,16 +35,15 @@ gulp.task('templates', function() {
 });
 
 gulp.task('host',function () {
-    child_process.exec('ws --port ' +port, {
-        cwd: __dirname
-    })
-        .on('error',function (err) {
-            console.log(err);
-        });
-    console.log('Host listen on port ' +port);
+  gulp.src(root)
+      .pipe(webserver({
+        livereload: true,
+        port: port,
+        directoryListing: true,
+        open: true
+      }));
 });
 gulp.task('default',['sass','templates','host'],function () {
-    plugins.livereload.listen();
     gulp.watch(root+'/css/**/*.scss',['sass']);
     gulp.watch([
         root+'/*.pug',

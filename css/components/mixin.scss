@@ -1,37 +1,33 @@
-@mixin transform($value) {
-    -webkit-transform: $value;
-    -moz-transform: $value;
-    -ms-transform: $value;
-    -o-transform: $value;
-    transform: $value;
-}
-@mixin box-sizing($value) {
-    -webkit-box-sizing: $value;
-    -moz-box-sizing: $value;
-    box-sizing: $value;
-}
 @mixin breakpoint($min: 0, $max: 0) {
     $type: type-of($min);
     @if $type == string {
         $class: $min;
         @if $class == xs {
+            @media (max-width: 575px) { @content; }
+        }
+        @else if $class == sm {
             @media (max-width: 767px) { @content; }
         }
-        
-        @else if $class == sm {
+        @else if $class == md {
+            @media (max-width: 991px) { @content; }
+        }
+        @else if $class == lg {
+            @media (max-width: 1199px) { @content; }
+        }
+        @else if $class == sm-up {
+            @media (min-width: 576px) { @content; }
+        }
+        @else if $class == md-up {
             @media (min-width: 768px) { @content; }
         }
-        
-        @else if $class == md {
+        @else if $class == lg-up {
             @media (min-width: 992px) { @content; }
         }
-        
-        @else if $class == lg {
+        @else if $class == hlg-up {
             @media (min-width: 1200px) { @content; }
         }
-        
         @else {
-            @warn "Breakpoint mixin supports: xs, sm, md, lg";
+            @warn "Breakpoint mixin supports: xs, sm, md, lg, mxs, msm, mmd, mlg";
         }
     }
     @else if $type == number {
@@ -48,5 +44,24 @@
         @media #{$query} {
             @content;
         }
+    }
+}
+
+@mixin clearfix() {
+    &:before,
+    &:after {
+        content: " ";
+        display: table;
+    }
+    &:after {
+        clear: both;
+    }
+}
+
+@mixin align-middle-group() {
+    position: relative;
+    > * {
+        top:50%;
+        transform: translateY(-50%);
     }
 }
